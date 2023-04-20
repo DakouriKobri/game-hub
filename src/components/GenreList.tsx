@@ -1,9 +1,11 @@
-// Local Files
+// NPM Packages
 import { Text } from '@chakra-ui/react';
+
+// Local Files
 import useGenres from '../hooks/useGenres';
 
 export function GenreList() {
-  const { error, genres, isLoading } = useGenres();
+  const { error, data: genres, isLoading } = useGenres();
 
   return (
     <ul>
