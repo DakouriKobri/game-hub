@@ -14,7 +14,7 @@ interface GameCardProps {
 export function GameCard({ game }: GameCardProps) {
   const { background_image, name, metacritic, parent_platforms } = game;
   return (
-    <Card borderRadius={10} overflow="hidden">
+    <Card borderRadius={10} overflow="hidden" width="300px">
       <Image src={getCroppedImageUrl(background_image)} />
       <CardBody>
         <Heading fontSize="2xl">{name}</Heading>
