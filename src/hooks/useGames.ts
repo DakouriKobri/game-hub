@@ -6,7 +6,8 @@ import apiClient, { AxiosError, CanceledError } from '../services/api-client';
 
 export interface Game {
   id: 0;
-  name: 'string';
+  name: string;
+  background_image: string;
 }
 export interface FetchGamesResponse {
   count: number;
