@@ -1,5 +1,6 @@
-import { Box } from '@chakra-ui/react';
+// NPM Packages
 import { ReactNode } from 'react';
+import { Box } from '@chakra-ui/react';
 
 interface BoxProps {
   children: ReactNode;
