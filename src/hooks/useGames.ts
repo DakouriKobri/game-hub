@@ -4,10 +4,17 @@ import { useEffect, useState } from 'react';
 // Local Files
 import apiClient, { AxiosError, CanceledError } from '../services/api-client';
 
+export interface Platform {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 export interface Game {
   id: 0;
   name: string;
   background_image: string;
+  parent_platforms: { platform: Platform }[];
 }
 export interface FetchGamesResponse {
   count: number;
