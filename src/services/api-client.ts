@@ -1,5 +1,5 @@
 // NPM Packages
-import axios, { AxiosError, CanceledError } from 'axios';
+import axios, { AxiosError, AxiosRequestConfig, CanceledError } from 'axios';
 
 export default axios.create({
   baseURL: 'https://api.rawg.io/api',
@@ -8,4 +8,5 @@ export default axios.create({
   },
 });
 
+export type { AxiosRequestConfig };
 export { AxiosError, CanceledError };
