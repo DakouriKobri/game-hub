@@ -14,6 +14,7 @@ export interface Game {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  rating_top: number;
 }
 function useGames(gameQuery: GameQuery) {
   return useData<Game>(
