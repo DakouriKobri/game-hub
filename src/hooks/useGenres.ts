@@ -1,5 +1,5 @@
 // Local Files
-import useData from './useData';
+import genres from '../data/genres';
 
 export interface Genre {
   id: number;
@@ -8,7 +8,7 @@ export interface Genre {
 }
 
 function useGenres() {
-  return useData<Genre>('/genres');
+  return { data: genres, isLoading: false, error: null };
 }
 
 export default useGenres;

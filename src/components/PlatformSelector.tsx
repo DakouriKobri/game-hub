@@ -23,12 +23,12 @@ export function PlatformSelector({
       </MenuButton>
       <MenuList>
         {platforms &&
-          platforms.map((platform) => (
+          platforms.map((platformsItem) => (
             <MenuItem
-              onClick={() => onSelectPlatform(platform)}
-              key={platform.id}
+              onClick={() => onSelectPlatform(platformsItem.platform)}
+              key={platformsItem.platform.id}
             >
-              {platform.name}
+              {platformsItem.platform.name}
             </MenuItem>
           ))}
       </MenuList>

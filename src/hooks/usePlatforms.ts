@@ -1,9 +1,8 @@
 // Local Files
-import useData from './useData';
-import { Platform } from './useGames';
+import platform from '../data/platforms';
 
 function usePlatforms() {
-  return useData<Platform>('/platforms/lists/parents');
+  return { data: platform, isLoading: false, error: null };
 }
 
 export default usePlatforms;
