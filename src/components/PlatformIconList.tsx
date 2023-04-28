@@ -14,7 +14,7 @@ import { BsGlobe } from 'react-icons/bs';
 import { HStack, Icon } from '@chakra-ui/react';
 
 // Local Files
-import { Platform } from '../hooks/useGames';
+import { Platform } from '../hooks/usePlatforms';
 
 interface PlatformIconListProps {
   platforms: Platform[];
