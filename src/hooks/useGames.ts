@@ -1,8 +1,8 @@
 // Local Files
 import { useQuery } from '@tanstack/react-query';
 import { GameQuery } from '../App';
-import apiClient, { FetchResponse } from '../services/api-client';
 import { Platform } from './usePlatforms';
+import APIClient, { FetchResponse } from '../services/api-client';
 
 export interface Game {
   id: 0;
@@ -13,23 +13,20 @@ export interface Game {
   rating_top: number;
 }
 
-async function fetchGames(gameQueryParams: GameQuery) {
-  return (
-    await apiClient.get<FetchResponse<Game>>('/games', {
-      params: {
-        genres: gameQueryParams.genre?.id,
-        parent_platforms: gameQueryParams.platform?.id,
-        ordering: gameQueryParams.sortOrder,
-        search: gameQueryParams.searchText,
-      },
-    })
-  ).data;
-}
+const gameService = new APIClient<Game>('/games');
 
 function useGames(gameQuery: GameQuery) {
   return useQuery<FetchResponse<Game>, Error>({
     queryKey: ['/games', gameQuery],
-    queryFn: () => fetchGames(gameQuery),
+    queryFn: () =>
+      gameService.getAll({
+        params: {
+          genres: gameQuery.genre?.id,
+          parent_platforms: gameQuery.platform?.id,
+          ordering: gameQuery.sortOrder,
+          search: gameQuery.searchText,
+        },
+      }),
   });
 }
 export default useGames;
