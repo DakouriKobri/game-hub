@@ -1,14 +1,15 @@
 // NPM Packages
+import { SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 import { Fragment } from 'react';
-import { Box, Button, SimpleGrid, Text } from '@chakra-ui/react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Local Files
 // import useGames, { Platform } from '../hooks/useGames';
+import { GameQuery } from '../App';
 import useGames from '../hooks/useGames';
 import { GameCard } from './GameCard';
-import { GameCardSkeleton } from './GameCardSkeleton';
 import { GameCardContainer } from './GameCardContainer';
-import { GameQuery } from '../App';
+import { GameCardSkeleton } from './GameCardSkeleton';
 
 interface GameGridProps {
   gameQuery: GameQuery;
@@ -19,7 +20,6 @@ export function GameGrid({ gameQuery }: GameGridProps) {
     error,
     data: games,
     isLoading,
-    isFetchingNextPage,
     fetchNextPage,
     hasNextPage,
   } = useGames(gameQuery);
@@ -27,9 +27,21 @@ export function GameGrid({ gameQuery }: GameGridProps) {
 
   if (error) return <Text>{error.message}</Text>;
 
+  const fetchedGamesCount =
+    games?.pages.reduce((total, page) => total + page.results.length, 0) || 0;
+
   return (
-    <Box padding="10px">
-      <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+    <InfiniteScroll
+      dataLength={fetchedGamesCount}
+      hasMore={!!hasNextPage}
+      next={() => fetchNextPage()}
+      loader={<Spinner />}
+    >
+      <SimpleGrid
+        padding="10px"
+        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+        spacing={6}
+      >
         {isLoading &&
           skeletons.map((skeleton) => (
             <GameCardContainer key={skeleton}>
@@ -46,12 +58,6 @@ export function GameGrid({ gameQuery }: GameGridProps) {
           </Fragment>
         ))}
       </SimpleGrid>
-
-      {hasNextPage && (
-        <Button marginY={5} whiteSpace="normal" onClick={() => fetchNextPage()}>
-          {isFetchingNextPage ? 'Loading...' : 'Load More'}
-        </Button>
-      )}
-    </Box>
+    </InfiniteScroll>
   );
 }
