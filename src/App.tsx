@@ -1,15 +1,15 @@
 // NPM Packages
+import { Box, Flex, Grid, GridItem, Show } from '@chakra-ui/react';
 import { useState } from 'react';
-import { Grid, GridItem, Flex, Show, Box } from '@chakra-ui/react';
 
 // Local Files
-import { NavBar } from './components/NavBar';
 import { GameGrid } from './components/GameGrid';
+import { GameHeading } from './components/GameHeading';
 import { GenreList } from './components/GenreList';
-import { Genre } from './hooks/useGenres';
+import { NavBar } from './components/NavBar';
 import { PlatformSelector } from './components/PlatformSelector';
 import { SortSelector } from './components/SortSelector';
-import { GameHeading } from './components/GameHeading';
+import { Genre } from './hooks/useGenres';
 import { Platform } from './hooks/usePlatforms';
 
 export interface GameQuery {
