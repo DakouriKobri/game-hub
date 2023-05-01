@@ -1,5 +1,6 @@
 // NPM Packages
 import { useQuery } from '@tanstack/react-query';
+import ms from 'ms';
 
 // Local
 import genres from '../data/genres';
@@ -17,7 +18,7 @@ function useGenres() {
   return useQuery({
     queryKey: ['genres'],
     queryFn: genreService.getAll,
-    staleTime: 24 * 60 * 60 * 1000, // 24 hours
+    staleTime: ms('24h'),
     initialData: genres,
   });
 }
