@@ -4,7 +4,6 @@ import { Fragment } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Local Files
-// import useGames, { Platform } from '../hooks/useGames';
 import { GameQuery } from '../App';
 import useGames from '../hooks/useGames';
 import { GameCard } from './GameCard';

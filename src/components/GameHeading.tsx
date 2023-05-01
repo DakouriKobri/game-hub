@@ -1,21 +1,18 @@
 // NPM Packages
 import { Heading } from '@chakra-ui/react';
+
+// Local Files
 import { GameQuery } from '../App';
-import useGenres from '../hooks/useGenres';
-import usePlatforms from '../hooks/usePlatforms';
+import useGenre from '../hooks/useGenre';
+import usePlatform from '../hooks/usePlatform';
 
 interface GameHeadingProps {
   gameQuery: GameQuery;
 }
 
 export function GameHeading({ gameQuery }: GameHeadingProps) {
-  const { data: genres } = useGenres();
-  const genre = genres?.results.find((genre) => genre.id === gameQuery.genreId);
-
-  const { data: platforms } = usePlatforms();
-  const platform = platforms?.results.find(
-    (platform) => platform.id === gameQuery.platformId
-  );
+  const genre = useGenre(gameQuery.genreId);
+  const platform = usePlatform(gameQuery.platformId);
 
   const heading = `${platform?.name || ''} ${genre?.name || ''} Games`;
   return (

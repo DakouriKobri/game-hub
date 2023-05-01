@@ -1,3 +1,4 @@
+// NPM Packages
 import { Badge } from '@chakra-ui/react';
 
 interface CriticScoreProps {

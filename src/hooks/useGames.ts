@@ -1,8 +1,10 @@
-// Local Files
+// NPM Packages
 import { useInfiniteQuery } from '@tanstack/react-query';
+
+// Local Files
 import { GameQuery } from '../App';
-import APIClient, { FetchResponse } from '../services/api-client';
 import { Platform } from './usePlatforms';
+import APIClient, { FetchResponse } from '../services/api-client';
 
 export interface Game {
   id: 0;
