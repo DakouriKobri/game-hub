@@ -4,24 +4,19 @@ import { Fragment } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 // Local Files
-import { GameQuery } from '../App';
 import useGames from '../hooks/useGames';
 import { GameCard } from './GameCard';
 import { GameCardContainer } from './GameCardContainer';
 import { GameCardSkeleton } from './GameCardSkeleton';
 
-interface GameGridProps {
-  gameQuery: GameQuery;
-}
-
-export function GameGrid({ gameQuery }: GameGridProps) {
+export function GameGrid() {
   const {
     error,
     data: games,
     isLoading,
     fetchNextPage,
     hasNextPage,
-  } = useGames(gameQuery);
+  } = useGames();
   const skeletons = [1, 2, 3, 4, 5, 6];
 
   if (error) return <Text>{error.message}</Text>;
